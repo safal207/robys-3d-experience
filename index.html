@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#171b1a" />
+    <meta name="description" content="ROBY'S — интерактивный 3D-концепт кофейни в Газипаше, созданный по фотографиям из отзывов. Исследуй два уровня и террасу." />
+    <link rel="icon" href="./public/favicon.svg" type="image/svg+xml" />
+    <title>ROBY'S — 3D Coffee House Experience</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="world" aria-label="Интерактивная 3D-модель кофейни Roby's Coffee House"></canvas>
+      <div class="shade" aria-hidden="true"></div>
+      <header class="header">
+        <a class="brand" href="#intro" aria-label="Roby's 3D Experience, на главную">
+          <span class="brand-mark">R<span>.</span></span>
+          <span class="brand-name"><strong>ROBY'S</strong><small>COFFEE HOUSE / 3D</small></span>
+        </a>
+        <div class="header-right">
+          <span class="loc"><span class="loc-dot"></span> GAZİPAŞA, TÜRKİYE</span>
+          <button id="aboutOpen" class="info-button" aria-label="О проекте" title="О проекте">i</button>
+        </div>
+      </header>
+      <aside class="hero" id="intro">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ИНТЕРАКТИВНАЯ РЕКОНСТРУКЦИЯ <span class="tag">КОНЦЕПТ 01</span></div>
+        <h1>Почувствуй<br/><em>пространство.</em></h1>
+        <p>Виртуальная прогулка по Roby's — от террасы до второго этажа. Сцена воссоздана по четырём фотографиям.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" id="startWalk"><span class="play-icon">▶</span> Начать прогулку <span aria-hidden="true">↗</span></button>
+          <button class="secondary-btn" id="resetView">Общий вид <span aria-hidden="true">↗</span></button>
+        </div>
+      </aside>
+      <nav class="places" aria-label="Точки просмотра">
+        <div class="places-header"><span>ИССЛЕДОВАТЬ ПРОСТРАНСТВО</span><span>01 — 04</span></div>
+        <button data-view="exterior" class="place active" aria-pressed="true"><span class="place-number">01</span><span class="place-body"><strong>Фасад и терраса</strong><small>Уличная зона</small></span><span class="place-arrow">↗</span></button>
+        <button data-view="hall" class="place" aria-pressed="false"><span class="place-number">02</span><span class="place-body"><strong>Главный зал</strong><small>Стойка и десерты</small></span><span class="place-arrow">↗</span></button>
+        <button data-view="mezzanine" class="place" aria-pressed="false"><span class="place-number">03</span><span class="place-body"><strong>Антресоль</strong><small>Металл и зелень</small></span><span class="place-arrow">↗</span></button>
+        <button data-view="upstairs" class="place" aria-pressed="false"><span class="place-number">04</span><span class="place-body"><strong>Второй этаж</strong><small>Зона отдыха</small></span><span class="place-arrow">↗</span></button>
+      </nav>
+      <div class="bottom-bar">
+        <div class="mode-switch" role="group" aria-label="Режим навигации"><button id="orbitBtn" class="selected" aria-pressed="true">◎ Обзор</button><button id="walkBtn" aria-pressed="false">⌁ Прогулка</button></div>
+        <div class="separator" aria-hidden="true"></div>
+        <button id="lightBtn" class="light-toggle" aria-pressed="false"><span class="sun-icon">☼</span> <span id="lightText">День</span></button>
+        <button id="fullBtn" class="fullscreen" aria-label="На весь экран" title="На весь экран">⛶</button>
+      </div>
+      <div class="instructions" id="instructions"><span class="mouse-icon">◉</span> Перетаскивай для вращения <span class="instructions-sep">·</span> Используй колесо для масштаба</div>
+      <div class="move-pad" id="movePad" aria-label="Управление прогулкой"><button data-move="forward" aria-label="Вперёд">↑</button><div><button data-move="left" aria-label="Влево">←</button><button data-move="back" aria-label="Назад">↓</button><button data-move="right" aria-label="Вправо">→</button></div></div>
+      <div class="model-note"><span class="note-star">✦</span> 3D-КОНЦЕПТ · ГЕОМЕТРИЯ ПРИБЛИЗИТЕЛЬНАЯ</div>
+      <div class="loading" id="loading"><div class="loader-mark">R<span>.</span></div><span>СОБИРАЕМ ПРОСТРАНСТВО</span><div class="loading-track"><i></i></div></div>
+      <dialog id="aboutDialog" class="about-dialog"><form method="dialog"><button class="dialog-close" aria-label="Закрыть">✕</button></form><span class="dialog-kicker">О ПРОЕКТЕ</span><h2>Roby's, по-новому.</h2><p>Исследовательский 3D-прототип, построенный вручную по четырём фото из отзывов посетителей. Он отражает узнаваемые особенности интерьера, но не является точным обмерным планом и не создан автоматически из фотограмметрии.</p><p>Для проверки реальных пропорций нужны размеры и дополнительные снимки. Исходные фотографии не распространяются в репозитории.</p><div class="dialog-tip">На ПК: мышь для обзора, WASD и перетаскивание мышью в режиме прогулки. На телефоне: свайп и экранные кнопки.</div></dialog>
+    </div>
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
