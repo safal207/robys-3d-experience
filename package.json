@@ -1,0 +1,12 @@
+{
+  "name": "robys-3d-experience",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Roby's Coffee House — interactive photo-informed 3D concept",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "dev": "python3 -m http.server 5173"
+  },
+  "engines": { "node": ">=20" }
+}
